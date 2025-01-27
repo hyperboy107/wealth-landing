@@ -8,10 +8,12 @@ import {
   Menu,
   X,
   ChevronRight,
+  ChevronLeft,
   CreditCard,
   TrendingUp,
   Shield
 } from 'lucide-react';
+import { Button } from '@/components/ui/Button';
 import {
   LineChart,
   Line,
@@ -48,6 +50,29 @@ function App() {
       alt: "Investment Growth"
     }
   ];
+
+  const blogs = [
+  {
+    title: "5 Tips for Budgeting Like a Pro",
+    description: "Learn how to master your finances with these simple budgeting tips.",
+    image: "https://source.unsplash.com/featured/?budget",
+  },
+  {
+    title: "Investment Strategies 101",
+    description: "Explore beginner-friendly strategies to grow your wealth.",
+    image: "https://source.unsplash.com/featured/?investment",
+  },
+  {
+    title: "Saving for the Future",
+    description: "Discover smart ways to save and secure your financial future.",
+    image: "https://source.unsplash.com/featured/?saving",
+  },
+  {
+    title: "Understanding Credit Scores",
+    description: "Find out how credit scores work and how to improve yours.",
+    image: "https://source.unsplash.com/featured/?credit",
+  },
+];
 
   const features = [
     {
@@ -116,6 +141,16 @@ function App() {
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
+
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const handlePrev = () => {
+    setCurrentIndex((prevIndex) => (prevIndex === 0 ? blogs.length - 1 : prevIndex - 1));
+  };
+
+  const handleNext = () => {
+    setCurrentIndex((prevIndex) => (prevIndex === blogs.length - 1 ? 0 : prevIndex + 1));
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-violet-50 to-white">
@@ -496,6 +531,51 @@ function App() {
           </motion.div>
         </div>
       </section>
+
+      {/* Blogs */}
+      <section className="py-12 px-4 bg-gray-100">
+      <div className="text-center mb-8">
+        <h2 className="text-3xl font-bold mb-4">Learn More About Managing Your Finances</h2>
+        <p className="text-gray-600">Explore our latest insights on budgeting, investing, and saving money.</p>
+      </div>
+      <div className="relative max-w-5xl mx-auto">
+        <button
+          onClick={handlePrev}
+          className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-white p-2 rounded-full shadow-md hover:shadow-lg"
+        >
+          <ChevronLeft size={24} />
+        </button>
+        <div className="flex overflow-hidden w-full">
+          {blogs.map((blog, index) => (
+            <Card
+              key={index}
+              className={`w-64 shrink-0 mx-4 transition-transform duration-300 ease-in-out ${
+                index === currentIndex ? "scale-100" : "scale-75 opacity-50"
+              }`}
+            >
+              <img
+                src={blog.image}
+                alt={blog.title}
+                className="rounded-t-2xl h-40 w-full object-cover"
+              />
+              <CardHeader className="px-4 py-2">
+                <h3 className="text-lg font-semibold">{blog.title}</h3>
+              </CardHeader>
+              <CardContent className="px-4 pb-4">
+                <p className="text-gray-700 text-sm mb-4">{blog.description}</p>
+                <Button variant="link" className="text-blue-500">Read MorButtone</Button>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+        <button
+          onClick={handleNext}
+          className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-white p-2 rounded-full shadow-md hover:shadow-lg"
+        >
+          <ChevronRight size={24} />
+        </button>
+      </div>
+    </section>
     </div>
   );
 }
