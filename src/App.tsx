@@ -550,7 +550,7 @@ function App() {
             <Card
               key={index}
               className={`w-64 shrink-0 mx-4 transition-transform duration-300 ease-in-out ${
-                index === currentIndex ? "scale-100" : "scale-75 opacity-50"
+                index === currentIndex ? "scale-100" : "scale-75 opacity-50" 
               }`}
             >
               <img
