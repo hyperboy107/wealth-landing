@@ -264,7 +264,7 @@ function App() {
                   </div>
                   <div className="relative pb-[56.25%]">
                     <iframe
-                      src="https://www.youtube.com/embed/dQw4w9WgXcQ" // Use the correct embed link
+                      src="https://videos.pexels.com/video-files/4984216/4984216-sd_640_360_30fps.mp4" // Use the correct embed link
                       className="absolute top-0 left-0 w-full h-full"
                       frameBorder="0"
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -563,7 +563,7 @@ function App() {
               </CardHeader>
               <CardContent className="px-4 pb-4">
                 <p className="text-gray-700 text-sm mb-4">{blog.description}</p>
-                <Button variant="link" className="text-blue-500">Read MorButtone</Button>
+                <Button variant="link" className="text-blue-500">Read More</Button>
               </CardContent>
             </Card>
           ))}
